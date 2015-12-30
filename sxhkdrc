@@ -108,7 +108,7 @@ ctrl + Return
 	thunar
 	
 alt + space
-	firefox
+	firefox-beta
 
 ctrl + alt + space
   chromium
@@ -126,14 +126,12 @@ alt + 3
 	inkscape
 
 alt + 4
-	pencil
-alt + 5
 	filezilla
 
-alt + 6
+alt + 5
 	vlc
 
-alt + 7
+alt + 6
 	rhythmbox
 
 super + alt + space
