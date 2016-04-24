@@ -25,3 +25,11 @@ URxvt*scrollstyle: rxvt
 *color13:   #9f79ee
 *color14:   #79cdcd
 *color15:   #e8e9ca
+
+Xft.dpi: 90
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
