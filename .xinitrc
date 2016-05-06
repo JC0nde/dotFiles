@@ -15,7 +15,8 @@ xrdb ~/.Xressources &
 numlockx &
 unclutter &
 sxhkd &
-(sleep 2s  && /usr/bin/setxkbmap -option "ctrl:swapcaps" &&  /usr/bin/xmodmap /home/$USER/.Xmodmap && xcape -t 10000 -e 'Control_R=Return') &  # switches CAPSLOCK and Ctrl and sets up xcape ->CtrlR/Enter
+# switches CAPSLOCK and Ctrl and sets up xcape ->CtrlR/Enter
+(sleep 2s  && /usr/bin/setxkbmap -option "ctrl:swapcaps" &&  /usr/bin/xmodmap /home/$USER/.Xmodmap && xcape -t 10000 -e 'Control_R=Return') &
 
 exec bspwm
 
