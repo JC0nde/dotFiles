@@ -1,16 +1,211 @@
-Madame, Monsieur,
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel=icon type="image/png" href="images/favicon.png">
+        <link rel=apple-touch-icon type="image/png" href="images/faviconApple.png">
+        <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" /><![endif]-->
+        <title>Offre spontannée - Do !</title>
+        <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+        <meta content="telephone=no" name="format-detection" />
+        <style type="text/css">
+         /* Reset */
+         body{
+           margin:0;
+           padding:0;
+           -ms-text-size-adjust:100%;
+           -webkit-text-size-adjust:100%;
+         }
+         img{
+           border:0 none;
+           height:auto;
+           line-height:100%;
+           outline:none;
+           text-decoration:none;
+           -ms-interpolation-mode:bicubic;
+         }
+         a img{
+           border:0 none;
+         }
+         table{
+           mso-table-lspace:0pt;
+           mso-table-rspace:0pt;
+         }
+         table, td{
+           border-collapse:collapse;
+         }
 
-Récemment diplômé de Procom en Webdesign, je suis fortement intéressé par votre agence.
-Ayant déjà eu l'occasion de collaborer avec vos 2 webdesigners actuels, Emilie Karzegard et Valentin Ritz, je me permets tout naturellement de vous adresser ma candidature pour un poste de webdesigner.
-En effet, lors de nos études, une bonne dynamique de groupe s'était imposée spontanément. Raison pour laquelle, je me tourne aujourd'hui vers vous. 
-Toujours  à l'affut des dernières « technos » , autodidacte et passionné, je suis autant à l'aise sur Wordpress que Drupal, avec de bonnes connaissances en développement front-end ( CSS3 / HTML5 / Javascript / préprocesseurs CSS / Responsive design ) ainsi qu'en développement back-end ( PHP / MySQL / Frameworks MVC ). Adepte de méthodes telles que K.I.S.S, D.R.Y ou le code reuse, je chercher avant tout à optimiser la qualité de mon travail.
-Je serai heureux de pouvoir rejoindre votre équipe et de partager nos compétences. N'hésitez donc pas à me contacter pour de plus amples informations, même par curiosité...
-Au plaisir de vous rencontrer lors d'un prochain entretien, je vous prie, Madame, Monsieur, d'agréer à mes sincères salutations.
-
-									Jonathan Conde
-
-
-
-
-
-   
+         /* Hover classes */
+         .call-blue:hover {
+           background:#00B9BE !important;
+           color:#ffffff !important;
+         }
+        </style>
+    </head>
+    <body style="font-family:Arial, Helvetica, sans-serif; font-size: 14px; line-height:18px;">
+        <table valign="top" bgcolor="#EEEEEE" border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tbody>
+                <tr>
+                    <td align="center">
+                        <table border="0" cellpadding="0" cellspacing="0" width="625">
+                            <tbody>
+                                <tr>
+                                    <td height="40">&nbsp;</td>
+                                </tr>
+                                <!-- En-tête -->
+                                <tr>
+                                    <td align="center" height="95" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="566">
+                                            <tbody>
+                                                <tr>
+                                                    <td colspan="2" height="10" valign="top">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="left" height="74" valign="middle" width="50%"><a href="http://www.jonathanconde.com" target="_self" style="text-decoration:none !important;border:none !important;"><img src="logo.png" alt='mon logo' style="width: 74px; height: 74px;" /></a></td>
+                                                    <td align="right" style="font-family:Arial, Helvetica, sans-serif; font-size: 14px; font-weight: bold; color:#2e2d30; text-transform: uppercase;" valign="middle" width="50%"><span style="color:#00B9BE">Jonathan Conde </span>|
+                                                        Webdesigner
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="2" height="10" valign="top">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- En-tête - Fin -->
+                                <tr>
+                                    <td height="40">&nbsp;</td>
+                                </tr>
+                                <!-- Bloc - DEB -->
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table border="0" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td height="25">&nbsp;</td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 30px; line-height:34px; text-transform: uppercase; font-weight: normal; color:#00B9BE;">
+                                                        <strong>CANDIDATURE SPONTANNÉE - WEBDESIGNER</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center" style="font-family: Arial, Helvetica, sans-serif; font-size: 22px; line-height:26px; text-transform: uppercase; font-weight: lighter; color:#968c82;padding-top:10px;">
+                                                        <strong>Wordpress - Drupal</strong>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align="center">
+                                                        <table border="0" cellpadding="0" cellspacing="5" >
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td height="20">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">
+                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="justify" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: lighter;padding-top:10px;color:#666" valign="top">
+                                                                                        <p>
+                                                                                            Madame, Monsieur,
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            Récemment diplômé de Procom en Webdesign, je suis fortement intéressé par votre agence.
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            Ayant déjà eu l'occasion de collaborer avec vos 2 webdesigners actuels, Emilie Karzegard et Valentin Ritz, je me permets tout naturellement de vous adresser ma candidature pour un poste de webdesigner.
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            En effet, lors de nos études, une bonne dynamique de groupe s'était imposée spontanément. Raison pour laquelle, je me tourne aujourd'hui vers vous.
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            Toujours  à l'affut des dernières « technos » , autodidacte et passionné, je suis autant à l'aise sur Wordpress que Drupal, avec de bonnes connaissances en développement front-end ( CSS3 / HTML5 / Javascript / préprocesseurs CSS / Responsive design ) ainsi qu'en développement back-end ( PHP / MySQL / Frameworks MVC ). Adepte de méthodes telles que K.I.S.S, D.R.Y ou le code reuse, je chercher avant tout à optimiser la qualité de mon travail.
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            Je serai heureux de pouvoir rejoindre votre équipe et de partager nos compétences. N'hésitez donc pas à me contacter pour de plus amples informations, même par curiosité...
+                                                                                        </p>
+                                                                                        <p>
+                                                                                            <br/>
+                                                                                            Au plaisir de vous rencontrer lors d'un prochain entretien, je vous prie d'agréer, Madame, Monsieur, mes sincères salutations.
+                                                                                        </p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td height="40">&nbsp;</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" height="65" valign="middle">
+                                                                                        <a class="call-blue" href="http://www.jonathanconde.com" style="display:block;border:2px solid #00B9BE;padding: 10px 50px;font-family: Arial, Helvetica, sans-serif; font-size:22px; line-height:26px; color:#00B9BE; text-decoration: none !important; text-decoration:none;width:400px;" target="_blank">
+                                                                                            www.jonathanconde.com
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="30">&nbsp;</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="center">
+                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td align="center" style="color:#666;font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: lighter;padding-top:10px;" valign="top">Retrouvez-moi facilement sur le web</td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center">
+                                                                                        <table border="0" cellpadding="0" cellspacing="0">
+                                                                                            <tbody>
+                                                                                                <tr>
+                                                                                                    <td height="15">&nbsp;</td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center">
+                                                                                                        <a href="https://twitter.com/JC0nde" style="text-decoration:none;display:block;border:none; outline:none;" target="_blank"><img alt="twitter" src="icon_twitter.png" /> </a>
+                                                                                                    </td>
+                                                                                                    <td width="17">&nbsp;</td>
+                                                                                                    <td align="center">
+                                                                                                        <a href="https://github.com/JC0nde" style="text-decoration:none;display:block;border:none; outline:none;" target="_blank"><img alt="github" src="github.png" /> </a>
+                                                                                                    </td>
+                                                                                                    <td width="17">&nbsp;</td>
+                                                                                                    <td align="center">
+                                                                                                        <a href="https://ch.linkedin.com/in/jonathanconde" style="text-decoration:none;display:block;border:none; outline:none;" target="_blank"><img alt="linkedin" src="icon_in.png" /> </a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="left" colspan="2" height="10">&nbsp;</td>
+                                                                                                </tr>
+                                                                                            </tbody>
+                                                                                        </table>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td height="30">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- Bloc - Fin -->
+                                <tr>
+                                    <td height="40">&nbsp;</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
