@@ -1,3 +1,10 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
+(setq user-mail-address "mail@jonathanconde.com")
+(setq user-full-name "Jonathan Conde")
+
 (setq gnus-select-method '(nnnil ""))
 (setq gnus-secondary-select-methods '((nnml "")
                                       (nnimap "mail.infomaniak.ch")))
@@ -41,3 +48,6 @@
 ;; Demon to fetch email every 5 minutes when Emacs has been idle for 5 minutes:
 (gnus-demon-add-handler 'gnus-demon-scan-news 5 5)
 (gnus-demon-init)
+
+(provide '.gnus)
+;;; .gnus ends here
