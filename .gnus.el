@@ -1,11 +1,17 @@
-;; All config comes from http://koldfront.dk/text/gnus-email-tutorial.html
-
 (setq gnus-select-method '(nnnil ""))
 (setq gnus-secondary-select-methods '((nnml "")
                                       (nnimap "mail.infomaniak.ch")))
 
 (setq smtpmail-smtp-service 587
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
+
+(setq message-send-mail-function 'smtpmail-send-it
+      smtpmail-starttls-credentials '(("mail.infomaniak.ch" 587 nil nil))
+      smtpmail-auth-credentials '(("mail.infomaniak.ch" 587 "mail@jonathanconde.com" nil))
+      smtpmail-default-smtp-server "mail.infomaniak.ch"
+      smtpmail-smtp-server "mail.infomaniak.ch"
+      smtpmail-smtp-service 587
+      starttls-use-gnutls t)
 
 ;; Use fancy splitting:
 (setq nnmail-split-methods 'nnmail-split-fancy)
