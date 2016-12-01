@@ -141,13 +141,13 @@ super + alt + space
 # Volume  
 ########
 
-# Toggle mute/unmute volume
-F8
-	amixer  set Master toggle
-
 # Adjust volume
-{F9,F10}
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
 	amixer  set Master 5{-,+} unmute
+
+XF86AudioMute
+        amixer set Master 1+ toggle  
+
 
 # make sxhkd reload its configuration files:
 super + Escape
