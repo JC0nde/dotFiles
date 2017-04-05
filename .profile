@@ -1,3 +1,6 @@
-export EMAIL="mail@jonathanconde.com"
-export NAME="Jonathan Conde"
-export SMTPSERVER="mail.infomaniak.ch"
+XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CONFIG_HOME
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
