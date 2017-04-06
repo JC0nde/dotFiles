@@ -10,16 +10,33 @@ if [ -d /etc/X11/xinit/xinitrc.d ]; then
   unset f
 fi
 
-sh ~/.fehbg &
-compton --config "~/.config/compton.conf" -b &
-# [ ! -s ~/.config/mpd/pid ] && mpd /home/jonathan/.comfig/mpd/mpd.conf &
-xrdb ~/.Xresources &
-syndaemon -i 0.5 -t -K -R -d
-numlockx &
-unclutter &
-sxhkd &
-(sleep 2s  && /usr/bin/setxkbmap -option "ctrl:swapcaps" &&  /usr/bin/xmodmap /home/$USER/.Xmodmap && xcape -t 10000 -e 'Control_R=Return') &  # switches CAPSLOCK and Ctrl and sets up xcape ->CtrlR/Enter
+# Swap caps lock and ctrl left
+setxkbmap -option "ctrl:swapcaps"
 
+# Set Menu button to super R with xmodmap and make ENTER button be a Ctrl Right if pressed with another key with x-cape
+xmodmap "$HOME/.Xmodmap"
+xcape -e 'Control_R=Return'
+
+# X colors and fonts
+xrdb -merge "$HOME/.Xresources"
+
+# Wallpaper
+sh "$HOME/.fehbg" &
+
+# No touching keypad while typing
+syndaemon -i 0.5 -t -K -R -d
+
+# Numlock on
+numlockx &
+
+# hide cursor after some time
+unclutter &
+
+# Load keybindings for bspwm
+sxhkd  &
+
+# Execute wm
 exec bspwm
+
 
 
