@@ -32,6 +32,9 @@ numlockx &
 # hide cursor after some time
 unclutter &
 
+# Compton
+compton --config "$HOME/.config/compton.conf" -b &
+
 # Load keybindings for bspwm
 sxhkd  &
 
