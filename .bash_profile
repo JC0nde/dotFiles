@@ -2,9 +2,6 @@
 # ~/.bash_profile
 #
 
-export PS1="___________________    | \w @ \h (\u) \n| => "
-export PS2="| => "
-
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 
