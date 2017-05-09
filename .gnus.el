@@ -2,21 +2,21 @@
 ;;; Commentary:
 ;;; Code:
 
-(setq user-mail-address "mail@jonathanconde.com")
+(setq user-mail-address "xxx@xxx")
 (setq user-full-name "Jonathan Conde")
 
 (setq gnus-select-method '(nnnil ""))
 (setq gnus-secondary-select-methods '((nnml "")
-                                      (nnimap "mail.infomaniak.ch")))
+                                      (nnimap "mail.xxx.ch")))
 
 (setq smtpmail-smtp-service 587
       gnus-ignored-newsgroups "^to\\.\\|^[0-9. ]+\\( \\|$\\)\\|^[\"]\"[#'()]")
 
 (setq message-send-mail-function 'smtpmail-send-it
-      smtpmail-starttls-credentials '(("mail.infomaniak.ch" 587 nil nil))
-      smtpmail-auth-credentials '(("mail.infomaniak.ch" 587 "mail@jonathanconde.com" nil))
-      smtpmail-default-smtp-server "mail.infomaniak.ch"
-      smtpmail-smtp-server "mail.infomaniak.ch"
+      smtpmail-starttls-credentials '(("mail.xxx.ch" 587 nil nil))
+      smtpmail-auth-credentials '(("mail.xxx.ch" 587 "xxx@xxx" nil))
+      smtpmail-default-smtp-server "mail.xxx.ch"
+      smtpmail-smtp-server "mail.xxx.ch"
       smtpmail-smtp-service 587
       starttls-use-gnutls t)
 
@@ -39,7 +39,7 @@
 (setq gnus-summary-display-arrow nil)
 
 ;; Archive outgoing email in Sent folder on infomaniak.ch:
-(setq gnus-message-archive-method '(nnimap "mail.infomaniak.ch")
+(setq gnus-message-archive-method '(nnimap "mail.xxx.ch")
       gnus-message-archive-group "Sent")
 
 ;; Mark gcc'ed (archived) as read:
