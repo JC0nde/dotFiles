@@ -1,4 +1,4 @@
-![Desktop](https://github.com/JC0nde/dotfiles/screenshot.png)
+![Desktop](./screenshot.png)
 Fonts: Source Code Pro
 
 ##Setup
