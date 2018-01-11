@@ -5,6 +5,9 @@ Fonts: Source Code Pro
 
 - archlinux
 - bspwm
+- polybar
+- compton
+- dunst
 
 ##Apps
 
