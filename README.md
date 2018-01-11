@@ -11,8 +11,8 @@ Fonts: Source Code Pro
 
 ##Apps
 
-- Firefox-nightly
-- Chromium (cVim)
+- firefox-nightly
+- chromium (cVim)
 - urxvt
   - ranger
   - ncmpcpp
