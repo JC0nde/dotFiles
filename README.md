@@ -1,7 +1,7 @@
 ![Desktop](./screenshot.png?raw=true)
 Fonts: Source Code Pro
 
-##Setup
+## Setup
 
 - archlinux
 - bspwm
@@ -10,7 +10,7 @@ Fonts: Source Code Pro
 - dunst
 - solarized-dark theme
 
-##Apps
+## Apps
 
 - firefox-nightly
 - chromium (cVim)
@@ -24,7 +24,7 @@ Fonts: Source Code Pro
 - dmenu
 - ...
 
-##Links
+## Links
 
 - [Website](https://jonathanconde.com)
 - [Twitter](https://twitter.com/JC0nde)
