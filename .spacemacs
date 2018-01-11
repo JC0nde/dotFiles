@@ -1,4 +1,3 @@
-
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
@@ -32,6 +31,10 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     lua
+     yaml
+     csv
+     sql
      (ranger :variables
              ranger-show-preview t)
      python
@@ -60,6 +63,8 @@ values."
      spell-checking
      syntax-checking
      version-control
+     pandoc
+     gnus
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -121,7 +126,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner '1
    ;; List of items to show in startup buffer or an association list of
    ;; the form `(list-type . list-size)`. If nil then it is disabled.
    ;; Possible values for list-type are:
@@ -137,7 +142,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(solarized-dark spacemacs-dark
+   dotspacemacs-themes '(solarized-dark solarized-light dracula spacemacs-dark
                                         spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -336,6 +341,66 @@ you should place your code here."
   (require 'server)
   (unless (server-running-p)
     (server-start))
+  ;; ;; Gnus
+  ;; (setq user-mail-address "mail@jonathanconde.com"
+  ;;       user-full-name "Jonathan Conde")
+
+  ;; ;; Get email, and store in nnml
+  ;; (add-to-list 'gnus-secondary-select-methods
+  ;;              '(nnimap "prof"
+  ;;                       (nnimap-address "mail.infomaniak.ch")
+  ;;                       (nnimap-server-port 993)
+  ;;                       (nnimap-stream ssl)))
+
+  ;; (add-to-list 'gnus-secondary-select-methods
+  ;;              '(nnimap "gmail"
+  ;;                       (nnimap-address "imap.gmail.com")
+  ;;                       (nnimap-server-port 993)
+  ;;                       (nnimap-stream ssl)))
+
+  ;; ;; Send email:
+  ;; (setq message-send-mail-function 'smtpmail-send-it
+  ;;       smtpmail-default-smtp-server "mail.infomaniak.ch"
+  ;;       smtpmail-smtp-service 587
+  ;;       smtpmail-local-domain "archie")
+
+  ;; (defun my-gnus-group-list-subscribed-groups ()
+  ;;   "List all subscribed groups with or without un-read messages"
+  ;;   (interactive)
+  ;;   (gnus-group-list-all-groups 5))
+
+  ;; (define-key gnus-group-mode-map
+  ;;   ;; list all the subscribed groups even they contain zero un-read messages
+  ;;   (kbd "o") 'my-gnus-group-list-subscribed-groups)
+
+;; (eval-after-load 'gnus-topic
+;;   '(progn
+;;      (setq gnus-message-archive-group '((format-time-string "sent.%Y")))
+;;      (setq gnus-server-alist '(("archive" nnfolder "archive" (nnfolder-directory "~/Mail/archive")
+;;                                 (nnfolder-active-file "~/Mail/archive/active")
+;;                                 (nnfolder-get-new-mail nil)
+;;                                 (nnfolder-inhibit-expiry t))))
+;; (setq gnus-topic-topology '(("Gnus" visible)
+;;                                  (("misc" visible))
+;;                                  (("prof" visible nil nil))
+;;                                  (("gmail" visible nil nil))))
+
+;;      (setq gnus-topic-alist '(("prof" ;; the key of topic
+;;                                "Inbox"
+;;                                "Brouillons"
+;;                                "Envoyés")
+;;                               ("gmail" ;; the key of topic
+;;                                "INBOX"
+;;                                "[Gmail]/Sent Mail"
+;;                                "[Gmail]/Trash"
+;;                                "Sent Messages"
+;;                                "Drafts")
+;;                               ("misc" ;; the key of topic
+;;                                "nnfolder+archive:sent.2015-12"
+;;                                "nnfolder+archive:sent.2016"
+;;                                "nnfolder+archive:sent.2017"
+;;                                "nndraft:drafts")
+;;                               ("Gnus")))))
   )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -344,10 +409,221 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#080808" "#d70000" "#67b11d" "#875f00" "#268bd2" "#af00df" "#00ffff" "#b2b2b2"])
+ '(custom-safe-themes
+   (quote
+    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (disaster company-c-headers cmake-mode clang-format boxquote bbdb ox-reveal ox-gfm ranger yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode xterm-color web-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl company-web web-completion-data company-statistics company auto-yasnippet auto-dictionary ac-ispell auto-complete phpunit phpcbf php-extras php-auto-yasnippets yasnippet drupal-mode php-mode solarized-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (pandoc-mode ht moe-theme lua-mode yaml-mode csv-mode sql-indent disaster company-c-headers cmake-mode clang-format boxquote bbdb ox-reveal ox-gfm ranger yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode xterm-color web-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl company-web web-completion-data company-statistics company auto-yasnippet auto-dictionary ac-ispell auto-complete phpunit phpcbf php-extras php-auto-yasnippets yasnippet drupal-mode php-mode solarized-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ox-pandoc)))
+ '(safe-local-variable-values
+   (quote
+    ((eval progn
+           (set
+            (make-local-variable
+             (quote org-time-clocksum-format))
+            (quote
+             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+           (local-set-key
+            (kbd "<f6>")
+            (lambda nil
+              (interactive)
+              (beginning-of-buffer)
+              (re-search-forward "Facture numéro: \\([0-9]+\\)")
+              (let
+                  ((n
+                    (string-to-number
+                     (match-string 1))))
+                (kill-region
+                 (match-beginning 1)
+                 (match-end 1))
+                (insert
+                 (format "%d"
+                         (1+ n))))
+              (beginning-of-buffer)
+              (re-search-forward "Date de facturation: *")
+              (kill-region
+               (point)
+               (save-excursion
+                 (end-of-line)
+                 (point)))
+              (org-insert-time-stamp
+               (current-time)
+               nil t)
+              (beginning-of-buffer)
+              (search-forward "#+BEGIN: clocktable")
+              (unwind-protect
+                  (progn
+                    (defadvice org-table-goto-column
+                        (before always-make-new-columns
+                                (n &optional on-delim force)
+                                activate)
+                      "always adds new columns when we move to them"
+                      (setq force t))
+                    (org-clocktable-shift
+                     (quote right)
+                     1))
+                (ad-deactivate
+                 (quote org-table-goto-column)))
+              (beginning-of-buffer)
+              (search-forward "| totaltarget")
+              (org-table-recalculate t))))
+     (eval progn
+           (set
+            (make-local-variable
+             (quote org-time-clocksum-format))
+            (quote
+             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+           (local-set-key
+            (kbd "<f6>")
+            (lambda nil
+              (interactive)
+              (beginning-of-buffer)
+              (re-search-forward "Facture numéro: \\([0-9]+\\)")
+              (let
+                  ((n
+                    (string-to-number
+                     (match-string 1))))
+                (kill-region
+                 (match-beginning 1)
+                 (match-end 1))
+                (insert
+                 (format "%d"
+                         (1+ n))))
+              (beginning-of-buffer)
+              (re-search-forward "Invoice date: *")
+              (kill-region
+               (point)
+               (save-excursion
+                 (end-of-line)
+                 (point)))
+              (org-insert-time-stamp
+               (current-time)
+               nil t)
+              (beginning-of-buffer)
+              (search-forward "#+BEGIN: clocktable")
+              (unwind-protect
+                  (progn
+                    (defadvice org-table-goto-column
+                        (before always-make-new-columns
+                                (n &optional on-delim force)
+                                activate)
+                      "always adds new columns when we move to them"
+                      (setq force t))
+                    (org-clocktable-shift
+                     (quote right)
+                     1))
+                (ad-deactivate
+                 (quote org-table-goto-column)))
+              (beginning-of-buffer)
+              (search-forward "| totaltarget")
+              (org-table-recalculate t))))
+     (eval progn
+           (set
+            (make-local-variable
+             (quote org-time-clocksum-format))
+            (quote
+             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+           (local-set-key
+            (kbd "<f6>")
+            (lambda nil
+              (interactive)
+              (beginning-of-buffer)
+              (re-search-forward "Invoice number: \\([0-9]+\\)")
+              (let
+                  ((n
+                    (string-to-number
+                     (match-string 1))))
+                (kill-region
+                 (match-beginning 1)
+                 (match-end 1))
+                (insert
+                 (format "%d"
+                         (1+ n))))
+              (beginning-of-buffer)
+              (re-search-forward "Invoice date: *")
+              (kill-region
+               (point)
+               (save-excursion
+                 (end-of-line)
+                 (point)))
+              (org-insert-time-stamp
+               (current-time)
+               nil t)
+              (beginning-of-buffer)
+              (search-forward "#+BEGIN: clocktable")
+              (unwind-protect
+                  (progn
+                    (defadvice org-table-goto-column
+                        (before always-make-new-columns
+                                (n &optional on-delim force)
+                                activate)
+                      "always adds new columns when we move to them"
+                      (setq force t))
+                    (org-clocktable-shift
+                     (quote right)
+                     1))
+                (ad-deactivate
+                 (quote org-table-goto-column)))
+              (beginning-of-buffer)
+              (search-forward "| totaltarget")
+              (org-table-recalculate t))))
+     (eval progn
+           (set
+            (make-local-variable
+             (quote org-time-clocksum-format))
+            (quote
+             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+           (local-set-key
+            (kbd "<f5>")
+            (lambda nil
+              (interactive)
+              (beginning-of-buffer)
+              (re-search-forward "Invoice number: \\([0-9]+\\)")
+              (let
+                  ((n
+                    (string-to-number
+                     (match-string 1))))
+                (kill-region
+                 (match-beginning 1)
+                 (match-end 1))
+                (insert
+                 (format "%d"
+                         (1+ n))))
+              (beginning-of-buffer)
+              (re-search-forward "Invoice date: *")
+              (kill-region
+               (point)
+               (save-excursion
+                 (end-of-line)
+                 (point)))
+              (org-insert-time-stamp
+               (current-time)
+               nil t)
+              (beginning-of-buffer)
+              (search-forward "#+BEGIN: clocktable")
+              (unwind-protect
+                  (progn
+                    (defadvice org-table-goto-column
+                        (before always-make-new-columns
+                                (n &optional on-delim force)
+                                activate)
+                      "always adds new columns when we move to them"
+                      (setq force t))
+                    (org-clocktable-shift
+                     (quote right)
+                     1))
+                (ad-deactivate
+                 (quote org-table-goto-column)))
+              (beginning-of-buffer)
+              (search-forward "| totaltarget")
+              (org-table-recalculate t))))))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
