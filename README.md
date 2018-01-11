@@ -1,4 +1,4 @@
-![Desktop](/screenshot.png)
+![Desktop](./screenshot.png?raw=true)
 Fonts: Source Code Pro
 
 ##Setup
