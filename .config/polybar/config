@@ -1,0 +1,241 @@
+;              _       _
+;  _ __   ___ | |_   _| |__   __ _ _ __
+; | '_ \ / _ \| | | | | '_ \ / _` | '__|
+; | |_) | (_) | | |_| | |_) | (_| | |
+; | .__/ \___/|_|\__, |_.__/ \__,_|_|
+; |_|            |___/
+
+[colors]
+background = #000000
+foreground = #a0ebdbb2
+foreground-alt = #90665c54
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+white = #fbf1c7
+red = #cc241d
+green = #98971a
+yellow = #d79921
+blue = #458588
+purple = #b16286
+aqua = #689d6a
+orange = #d65d0e
+
+[bar/primary]
+width = 100%
+height = 28
+offset-x = 0
+offset-y = 0
+radius-top = 0
+radius-bottom = 0
+
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = Source Code Pro:pixelsize=11;3
+font-1 = FontAwesome:pixelsize=9;3
+
+modules-left = xwindow
+modules-center = bspwm
+modules-right = mpd volume wlan0 battery date
+
+; Put the bar at the bottom of the screen
+bottom =true 
+
+wm-restack = bspwm
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state> <label-mode> 
+label-focused-occupied = 
+label-focused-occupied-padding = 2
+
+label-focused-urgent = 
+label-focused-urgent-padding = 2
+
+label-focused-empty = 
+label-focused-empty-padding = 2
+
+label-occupied = 
+label-occupied-foreground = ${colors.foreground-alt}
+label-occupied-padding = 2
+
+label-urgent = 
+label-urgent-foreground = ${colors.orange}
+label-urgent-padding = 2
+
+label-empty = 
+label-empty-foreground = ${colors.foreground-alt}
+label-empty-padding = 2
+
+label-monocle = " " 
+label-monocle-foreground = ${colors.aqua}
+label-tiled = " "
+label-tiled-foreground = ${colors.aqua}
+label-fullscreen = " "
+label-fullscreen-foreground = ${colors.aqua}
+label-floating = " "
+label-floating-foreground = ${colors.aqua}
+label-pseudotiled = " "
+label-pseudotiled-foreground = ${colors.aqua}
+label-locked = " "
+label-locked-foreground = ${colors.aqua}
+label-sticky = " "
+label-sticky-foreground = ${colors.aqua}
+label-private = "  "
+label-private-foreground = ${colors.aqua}
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 70
+
+[module/wlan0]
+type = internal/network
+interface = wlp7s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-packetloss = <animation-packetloss> <label-connected>
+label-connected = %signal%%
+
+;format-disconnected =
+;format-disconnected = <label-disconnected>
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-0-foreground = ${colors.red}
+ramp-signal-1 = 
+ramp-signal-1-foreground = ${colors.yellow}
+ramp-signal-2 = 
+ramp-signal-2-foreground = ${colors.aqua}
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = ${colors.yellow}
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${colors.background}
+animation-packetloss-framerate = 1000
+
+[module/date]
+type = internal/date
+interval = 5
+
+time-alt = %H:%M
+date-alt = " %A, %e %B"
+
+time = %H:%M
+
+format-prefix = 
+format-prefix-foreground = ${colors.aqua}
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+master-soundcard = default
+speaker-soundcard = default
+headphone-soundcard = default
+
+master-mixer = Master
+
+mapped = true
+
+format-volume = <ramp-volume> <label-volume>
+label-volume = %percentage%%
+label-muted =  00
+label-muted-foreground = ${colors.orange}
+
+ramp-volume-0 = 
+ramp-volume-0-foreground = ${colors.red}
+ramp-volume-1 = 
+ramp-volume-1-foreground = ${colors.yellow}
+ramp-volume-2 = 
+ramp-volume-2-foreground = ${colors.aqua}
+
+[module/battery]
+type = internal/battery
+poll-interval = 5
+battery = BAT0
+adapter = ADP1
+full-at = 96
+
+format-full = <label-full>
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.aqua}
+label-full = %percentage%%
+
+format-charging = <label-charging>
+format-charging-prefix = " "
+format-charging-prefix-foreground = ${colors.yellow}
+label-charging = %percentage%
+
+format-discharging = <ramp-capacity> <label-discharging>
+label-discharging = %time%
+
+ramp-capacity-0 = 
+ramp-capacity-0-background = ${colors.red}
+ramp-capacity-0-foreground = ${colors.white}
+ramp-capacity-1 = 
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2 = 
+ramp-capacity-2-foreground = ${colors.yellow}
+ramp-capacity-3 = 
+ramp-capacity-3-foreground = ${colors.aqua}
+ramp-capacity-4 = 
+ramp-capacity-4-foreground = ${colors.aqua}
+
+[module/mpd]
+type = internal/mpd
+host = 127.0.0.1
+port = 6600
+interval = 1
+; label-song = -> %artist% - %title%
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <icon-repeat> <icon-repeatone> <icon-random>
+format-offline = "MPD offline"
+format-offline-prefix = " "
+format-offline-prefix-foreground = ${colors.red}
+
+format-paused-prefix = " "
+format-paused-prefix-foreground = ${colors.yellow}
+format-playing-prefix = " "
+format-playing-prefix-foreground = ${colors.aqua}
+format-stopped-prefix = " "
+format-stopped-prefix-foreground = ${colors.red}
+
+; Only applies if <icon-X> is used
+icon-play = " "
+icon-pause = " "
+icon-stop = " "
+icon-prev = "  "
+icon-next = " "
+icon-seekb = " "
+icon-seekf = " "
+icon-random = ""
+icon-repeat = " "
+icon-repeatone = "1 "
+
+; Used to display the state of random/repeat/repeatone
+; Only applies if <icon-[random|repeat|repeatone]> is used
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
