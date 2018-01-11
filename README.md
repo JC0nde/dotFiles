@@ -8,6 +8,7 @@ Fonts: Source Code Pro
 - polybar
 - compton
 - dunst
+- solarized-dark theme
 
 ##Apps
 
