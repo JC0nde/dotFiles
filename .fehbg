@@ -1,4 +1,3 @@
 #!/bin/sh
 'feh' '--bg-fill' '/home/jonathan/Images/neige.jpg'
 
-coucou
