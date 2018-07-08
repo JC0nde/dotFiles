@@ -31,6 +31,11 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     (shell :variables
+            shell-default-full-span nil
+            shell-protect-eshell-prompt nil
+            shell-default-shell 'eshell)
+     graphviz
      lua
      yaml
      csv
@@ -38,7 +43,7 @@ values."
      (ranger :variables
              ranger-show-preview t)
      python
-     javascript
+     (javascript :variables javascript-disable-tern-port-files nil)
      php
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -51,8 +56,10 @@ values."
      better-defaults
      emacs-lisp
      c-c++
+     pdf-tools
      git
      markdown
+     erc
      (org :variables
           org-enable-github-support t
           org-enable-reveal-js-support t)
@@ -65,6 +72,7 @@ values."
      version-control
      pandoc
      gnus
+     twitter
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -308,6 +316,19 @@ values."
    ;; (default nil)
    dotspacemacs-whitespace-cleanup nil
    ))
+(defun my-setup-indent (n)
+  ;; java/c/c++
+  (setq c-basic-offset n)
+  ;; web development
+  (setq coffee-tab-width n) ; coffeescript
+  (setq javascript-indent-level n) ; javascript-mode
+  (setq js-indent-level n) ; js-mode
+  (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+  (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+  (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+  (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+  (setq css-indent-offset n) ; css-mode
+  )
 
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
@@ -316,6 +337,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  (my-setup-indent 2) ; indent 2 spaces width
   )
 
 (defun dotspacemacs/user-config ()
@@ -341,6 +363,13 @@ you should place your code here."
   (require 'server)
   (unless (server-running-p)
     (server-start))
+  (setq twittering-use-master-password t)
+  (setq twittering-icon-mode t)
+  (setq twittering-connection-type-order '(wget curl urllib-http native urllib-https))
+  ;; JS Layer
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2)
+	(setq-default scss-indent-level 2)
   ;; ;; Gnus
   ;; (setq user-mail-address "mail@jonathanconde.com"
   ;;       user-full-name "Jonathan Conde")
@@ -410,220 +439,222 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
-   ["#080808" "#d70000" "#67b11d" "#875f00" "#268bd2" "#af00df" "#00ffff" "#b2b2b2"])
+	 ["#080808" "#d70000" "#67b11d" "#875f00" "#268bd2" "#af00df" "#00ffff" "#b2b2b2"])
  '(custom-safe-themes
-   (quote
-    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
+	 (quote
+		("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(evil-want-Y-yank-to-eol nil)
+ '(indent-tabs-mode t)
  '(package-selected-packages
-   (quote
-    (pandoc-mode ht moe-theme lua-mode yaml-mode csv-mode sql-indent disaster company-c-headers cmake-mode clang-format boxquote bbdb ox-reveal ox-gfm ranger yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode xterm-color web-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl company-web web-completion-data company-statistics company auto-yasnippet auto-dictionary ac-ispell auto-complete phpunit phpcbf php-extras php-auto-yasnippets yasnippet drupal-mode php-mode solarized-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ox-pandoc)))
+	 (quote
+		(org-category-capture graphviz-dot-mode erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks ghub pdf-tools tablist org-mime iedit highlight evil emoji-cheat-sheet-plus company-emoji twittering-mode smartparens helm helm-core projectile pandoc-mode ht moe-theme lua-mode yaml-mode csv-mode sql-indent disaster company-c-headers cmake-mode clang-format boxquote bbdb ox-reveal ox-gfm ranger yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic web-beautify livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode xterm-color web-mode unfill tagedit smeargle slim-mode shell-pop scss-mode sass-mode pug-mode orgit org-projectile org-present org-pomodoro alert log4e gntp org-download mwim multi-term mmm-mode markdown-toc markdown-mode magit-gitflow less-css-mode htmlize helm-gitignore helm-css-scss helm-company helm-c-yasnippet haml-mode gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-pos-tip pos-tip flycheck evil-magit magit magit-popup git-commit with-editor eshell-z eshell-prompt-extras esh-help emmet-mode diff-hl company-web web-completion-data company-statistics company auto-yasnippet auto-dictionary ac-ispell auto-complete phpunit phpcbf php-extras php-auto-yasnippets yasnippet drupal-mode php-mode solarized-theme ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ox-pandoc)))
  '(safe-local-variable-values
-   (quote
-    ((eval progn
-           (set
-            (make-local-variable
-             (quote org-time-clocksum-format))
-            (quote
-             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
-           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
-           (local-set-key
-            (kbd "<f6>")
-            (lambda nil
-              (interactive)
-              (beginning-of-buffer)
-              (re-search-forward "Facture numéro: \\([0-9]+\\)")
-              (let
-                  ((n
-                    (string-to-number
-                     (match-string 1))))
-                (kill-region
-                 (match-beginning 1)
-                 (match-end 1))
-                (insert
-                 (format "%d"
-                         (1+ n))))
-              (beginning-of-buffer)
-              (re-search-forward "Date de facturation: *")
-              (kill-region
-               (point)
-               (save-excursion
-                 (end-of-line)
-                 (point)))
-              (org-insert-time-stamp
-               (current-time)
-               nil t)
-              (beginning-of-buffer)
-              (search-forward "#+BEGIN: clocktable")
-              (unwind-protect
-                  (progn
-                    (defadvice org-table-goto-column
-                        (before always-make-new-columns
-                                (n &optional on-delim force)
-                                activate)
-                      "always adds new columns when we move to them"
-                      (setq force t))
-                    (org-clocktable-shift
-                     (quote right)
-                     1))
-                (ad-deactivate
-                 (quote org-table-goto-column)))
-              (beginning-of-buffer)
-              (search-forward "| totaltarget")
-              (org-table-recalculate t))))
-     (eval progn
-           (set
-            (make-local-variable
-             (quote org-time-clocksum-format))
-            (quote
-             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
-           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
-           (local-set-key
-            (kbd "<f6>")
-            (lambda nil
-              (interactive)
-              (beginning-of-buffer)
-              (re-search-forward "Facture numéro: \\([0-9]+\\)")
-              (let
-                  ((n
-                    (string-to-number
-                     (match-string 1))))
-                (kill-region
-                 (match-beginning 1)
-                 (match-end 1))
-                (insert
-                 (format "%d"
-                         (1+ n))))
-              (beginning-of-buffer)
-              (re-search-forward "Invoice date: *")
-              (kill-region
-               (point)
-               (save-excursion
-                 (end-of-line)
-                 (point)))
-              (org-insert-time-stamp
-               (current-time)
-               nil t)
-              (beginning-of-buffer)
-              (search-forward "#+BEGIN: clocktable")
-              (unwind-protect
-                  (progn
-                    (defadvice org-table-goto-column
-                        (before always-make-new-columns
-                                (n &optional on-delim force)
-                                activate)
-                      "always adds new columns when we move to them"
-                      (setq force t))
-                    (org-clocktable-shift
-                     (quote right)
-                     1))
-                (ad-deactivate
-                 (quote org-table-goto-column)))
-              (beginning-of-buffer)
-              (search-forward "| totaltarget")
-              (org-table-recalculate t))))
-     (eval progn
-           (set
-            (make-local-variable
-             (quote org-time-clocksum-format))
-            (quote
-             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
-           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
-           (local-set-key
-            (kbd "<f6>")
-            (lambda nil
-              (interactive)
-              (beginning-of-buffer)
-              (re-search-forward "Invoice number: \\([0-9]+\\)")
-              (let
-                  ((n
-                    (string-to-number
-                     (match-string 1))))
-                (kill-region
-                 (match-beginning 1)
-                 (match-end 1))
-                (insert
-                 (format "%d"
-                         (1+ n))))
-              (beginning-of-buffer)
-              (re-search-forward "Invoice date: *")
-              (kill-region
-               (point)
-               (save-excursion
-                 (end-of-line)
-                 (point)))
-              (org-insert-time-stamp
-               (current-time)
-               nil t)
-              (beginning-of-buffer)
-              (search-forward "#+BEGIN: clocktable")
-              (unwind-protect
-                  (progn
-                    (defadvice org-table-goto-column
-                        (before always-make-new-columns
-                                (n &optional on-delim force)
-                                activate)
-                      "always adds new columns when we move to them"
-                      (setq force t))
-                    (org-clocktable-shift
-                     (quote right)
-                     1))
-                (ad-deactivate
-                 (quote org-table-goto-column)))
-              (beginning-of-buffer)
-              (search-forward "| totaltarget")
-              (org-table-recalculate t))))
-     (eval progn
-           (set
-            (make-local-variable
-             (quote org-time-clocksum-format))
-            (quote
-             (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
-           (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
-           (local-set-key
-            (kbd "<f5>")
-            (lambda nil
-              (interactive)
-              (beginning-of-buffer)
-              (re-search-forward "Invoice number: \\([0-9]+\\)")
-              (let
-                  ((n
-                    (string-to-number
-                     (match-string 1))))
-                (kill-region
-                 (match-beginning 1)
-                 (match-end 1))
-                (insert
-                 (format "%d"
-                         (1+ n))))
-              (beginning-of-buffer)
-              (re-search-forward "Invoice date: *")
-              (kill-region
-               (point)
-               (save-excursion
-                 (end-of-line)
-                 (point)))
-              (org-insert-time-stamp
-               (current-time)
-               nil t)
-              (beginning-of-buffer)
-              (search-forward "#+BEGIN: clocktable")
-              (unwind-protect
-                  (progn
-                    (defadvice org-table-goto-column
-                        (before always-make-new-columns
-                                (n &optional on-delim force)
-                                activate)
-                      "always adds new columns when we move to them"
-                      (setq force t))
-                    (org-clocktable-shift
-                     (quote right)
-                     1))
-                (ad-deactivate
-                 (quote org-table-goto-column)))
-              (beginning-of-buffer)
-              (search-forward "| totaltarget")
-              (org-table-recalculate t))))))))
+	 (quote
+		((eval progn
+					 (set
+						(make-local-variable
+						 (quote org-time-clocksum-format))
+						(quote
+						 (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+					 (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+					 (local-set-key
+						(kbd "<f6>")
+						(lambda nil
+							(interactive)
+							(beginning-of-buffer)
+							(re-search-forward "Facture numéro: \\([0-9]+\\)")
+							(let
+									((n
+										(string-to-number
+										 (match-string 1))))
+								(kill-region
+								 (match-beginning 1)
+								 (match-end 1))
+								(insert
+								 (format "%d"
+												 (1+ n))))
+							(beginning-of-buffer)
+							(re-search-forward "Date de facturation: *")
+							(kill-region
+							 (point)
+							 (save-excursion
+								 (end-of-line)
+								 (point)))
+							(org-insert-time-stamp
+							 (current-time)
+							 nil t)
+							(beginning-of-buffer)
+							(search-forward "#+BEGIN: clocktable")
+							(unwind-protect
+									(progn
+										(defadvice org-table-goto-column
+												(before always-make-new-columns
+																(n &optional on-delim force)
+																activate)
+											"always adds new columns when we move to them"
+											(setq force t))
+										(org-clocktable-shift
+										 (quote right)
+										 1))
+								(ad-deactivate
+								 (quote org-table-goto-column)))
+							(beginning-of-buffer)
+							(search-forward "| totaltarget")
+							(org-table-recalculate t))))
+		 (eval progn
+					 (set
+						(make-local-variable
+						 (quote org-time-clocksum-format))
+						(quote
+						 (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+					 (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+					 (local-set-key
+						(kbd "<f6>")
+						(lambda nil
+							(interactive)
+							(beginning-of-buffer)
+							(re-search-forward "Facture numéro: \\([0-9]+\\)")
+							(let
+									((n
+										(string-to-number
+										 (match-string 1))))
+								(kill-region
+								 (match-beginning 1)
+								 (match-end 1))
+								(insert
+								 (format "%d"
+												 (1+ n))))
+							(beginning-of-buffer)
+							(re-search-forward "Invoice date: *")
+							(kill-region
+							 (point)
+							 (save-excursion
+								 (end-of-line)
+								 (point)))
+							(org-insert-time-stamp
+							 (current-time)
+							 nil t)
+							(beginning-of-buffer)
+							(search-forward "#+BEGIN: clocktable")
+							(unwind-protect
+									(progn
+										(defadvice org-table-goto-column
+												(before always-make-new-columns
+																(n &optional on-delim force)
+																activate)
+											"always adds new columns when we move to them"
+											(setq force t))
+										(org-clocktable-shift
+										 (quote right)
+										 1))
+								(ad-deactivate
+								 (quote org-table-goto-column)))
+							(beginning-of-buffer)
+							(search-forward "| totaltarget")
+							(org-table-recalculate t))))
+		 (eval progn
+					 (set
+						(make-local-variable
+						 (quote org-time-clocksum-format))
+						(quote
+						 (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+					 (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+					 (local-set-key
+						(kbd "<f6>")
+						(lambda nil
+							(interactive)
+							(beginning-of-buffer)
+							(re-search-forward "Invoice number: \\([0-9]+\\)")
+							(let
+									((n
+										(string-to-number
+										 (match-string 1))))
+								(kill-region
+								 (match-beginning 1)
+								 (match-end 1))
+								(insert
+								 (format "%d"
+												 (1+ n))))
+							(beginning-of-buffer)
+							(re-search-forward "Invoice date: *")
+							(kill-region
+							 (point)
+							 (save-excursion
+								 (end-of-line)
+								 (point)))
+							(org-insert-time-stamp
+							 (current-time)
+							 nil t)
+							(beginning-of-buffer)
+							(search-forward "#+BEGIN: clocktable")
+							(unwind-protect
+									(progn
+										(defadvice org-table-goto-column
+												(before always-make-new-columns
+																(n &optional on-delim force)
+																activate)
+											"always adds new columns when we move to them"
+											(setq force t))
+										(org-clocktable-shift
+										 (quote right)
+										 1))
+								(ad-deactivate
+								 (quote org-table-goto-column)))
+							(beginning-of-buffer)
+							(search-forward "| totaltarget")
+							(org-table-recalculate t))))
+		 (eval progn
+					 (set
+						(make-local-variable
+						 (quote org-time-clocksum-format))
+						(quote
+						 (:hours "%d" :require-hours t :minutes ":%02d" :require-minutes t)))
+					 (setq org-latex-tables-centered nil org-latex-default-table-environment "longtable")
+					 (local-set-key
+						(kbd "<f5>")
+						(lambda nil
+							(interactive)
+							(beginning-of-buffer)
+							(re-search-forward "Invoice number: \\([0-9]+\\)")
+							(let
+									((n
+										(string-to-number
+										 (match-string 1))))
+								(kill-region
+								 (match-beginning 1)
+								 (match-end 1))
+								(insert
+								 (format "%d"
+												 (1+ n))))
+							(beginning-of-buffer)
+							(re-search-forward "Invoice date: *")
+							(kill-region
+							 (point)
+							 (save-excursion
+								 (end-of-line)
+								 (point)))
+							(org-insert-time-stamp
+							 (current-time)
+							 nil t)
+							(beginning-of-buffer)
+							(search-forward "#+BEGIN: clocktable")
+							(unwind-protect
+									(progn
+										(defadvice org-table-goto-column
+												(before always-make-new-columns
+																(n &optional on-delim force)
+																activate)
+											"always adds new columns when we move to them"
+											(setq force t))
+										(org-clocktable-shift
+										 (quote right)
+										 1))
+								(ad-deactivate
+								 (quote org-table-goto-column)))
+							(beginning-of-buffer)
+							(search-forward "| totaltarget")
+							(org-table-recalculate t)))))))
+ '(standard-indent 2))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
